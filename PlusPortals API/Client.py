@@ -33,12 +33,12 @@ URL = "https://plusportals.com/"
 class Client:
 
     def __init__(self, school_name, email, password):
-        self.session = requests.Session()
         self.school_name = school_name
-        self.school_url = urljoin(URL, self.school_name)
         self.email = email
         self.password = password
 
+        self.session = requests.Session()
+        self.school_url = urljoin(URL, self.school_name)
         self.headers = Headers(self.session, self.school_name)
         self.token = None
 

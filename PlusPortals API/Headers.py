@@ -22,6 +22,9 @@
 # SOFTWARE.
 
 class Headers: 
+    """Provides a series of useful headers for making requests with the plusportals api"""
+
+    # base headers which are always the same
     base = {
         "authority": "plusportals.com",
         "accept": "*/*",
@@ -47,14 +50,13 @@ class Headers:
         self.__emailoption = session.cookies.get_dict().get("emailoption")
         self.__ppusername = session.cookies.get_dict().get("ppusername")
         self.__aspxauth = session.cookies.get_dict().get(".ASPXAUTH")
-
          
     @property
     def login_headers(self):
         return {
             "accept": "text/html,application/xhtml xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
             "cookie": f"__cfduid={self.__cfduid}; ppschoollink={self.__school_name}; UGUID={self.__uguid}; __RequestVerificationToken={self.__requestverificationtoken}; _pps=-480"
-            }
+        }
 
     @property
     def token_headers(self):
@@ -65,6 +67,7 @@ class Headers:
         return {'__requestverificationtoken': token, 'cookie': f'__cfduid={self.__cfduid}; ppschoollink={self.__school_name}; __RequestVerificationToken={self.__requestverificationtoken}; _pps=-480; ASP.NET_SessionId={self.__sessionid}; emailoption={self.__emailoption}; UGUID={self.__uguid}; ppusername={self.__ppusername}; .ASPXAUTH={self.__aspxauth}'}
 
     def reload(self):
+        """Reloads each of the values for the special header"""
         self.__cfduid = self.session.cookies.get_dict().get("__cfduid")
         self.__uguid = self.session.cookies.get_dict().get("UGUID")
         self.__requestverificationtoken = self.session.cookies.get_dict().get(

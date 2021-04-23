@@ -28,17 +28,10 @@ class Student(Client):
         self.grades = []
 
     def __str__(self):
-        string = f"School: {self.school_name}\nEmail: {self.email}\nPassword: {'*'*len(self.password)}\nGrades:\n\n"
-        grades = self.grades
-        if grades == []: 
-            string += "No grades availiable"
-        else:
-            string += self.check_grades()
-
-        return string
-
+        return f"School: {self.school_name}\nEmail: {self.email}\nPassword: {'*'*len(self.password)}\nGrades:\n\n"
 
     def check_grades(self): 
+        """Returns a string representation of the grades of the student"""
         grades = self.get_grades()
         string = ""
 
@@ -61,11 +54,9 @@ class Student(Client):
             self.grades = super().get_grades()
         return self.grades
 
-    def clear_grades(self): 
+    def refresh_grades(self):
+        """Resets the grades and retrieves them again if necessary""" 
         self.grades = []
-    
-    def refresh_grades(self): 
-        self.clear_grades()
         self.grades = super().get_grades()
         return self.grades
     
