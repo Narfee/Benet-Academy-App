@@ -28,7 +28,7 @@ class Student(Client):
         self.grades = []
 
     def __str__(self):
-        return f"School: {self.school_name}\nEmail: {self.email}\nPassword: {'*'*len(self.password)}\nGrades:\n\n"
+        return f"School: {self.school_name}\nEmail: {self.email}\nPassword: {'*'*len(self.password)}"
 
     def check_grades(self): 
         """Returns a string representation of the grades of the student"""
