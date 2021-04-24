@@ -95,7 +95,7 @@ class Client:
             response = self.session.post(urljoin(URL, 'ParentStudentDetails/GetMarkingPeriod'), headers=dict(self.headers.base, **spec_headers))
             marking_periods = json.loads(response.content.decode('utf-8'))[1:]
         except:
-            raise type("GradeErrpr", (Exception, ), {})("Error retrieving grades") 
+            raise type("GradeError", (Exception, ), {})("Error retrieving grades") 
 
 
         # goes through the marking periods and builds a list of grades
