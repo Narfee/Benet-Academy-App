@@ -79,9 +79,6 @@ class Client:
         """
         Retrieves the grades for the current person
 
-        Paramaters: 
-            token : str = the token to pass, if necessary
-
         Returns: 
             list[dict] = a list of marking periods and grades for that period
 
